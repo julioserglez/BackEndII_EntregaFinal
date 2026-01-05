@@ -32,7 +32,7 @@ const getOrderById = async(req,res)=> {
 const createOrder = async(req,res)=> {
     try {
         const {user, business, products} = req.body;
-        if(!user||!business||products) return res.status(400).json({status:"error",error:"Valores Incompletos"})
+        if(!user||!business||!products) return res.status(400).json({status:"error",error:"Valores Incompletos"})
         const userFound = await usersService.getUserById(user);
         const businessFound = await businessService.getBusinessById(business);
         const prods = await productsService.getProductsByIds(products);
@@ -76,3 +76,4 @@ export default {
     resolveOrder,
     addProduct
 }
+
